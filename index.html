@@ -271,53 +271,78 @@
     document.getElementById("retour").addEventListener("click", () => montrer("couverture"));
   </script>
 </body>
-  
-<!-- Compte à rebours pour Bébé -->
-<section id="compte-a-rebours">
-  <h2>🎂 Bientôt le grand jour, ma princesse ! 💗</h2>
-  <p>Chaque seconde nous rapproche de ton anniversaire ✨</p>
 
-  <div class="compteur">
-    <div><span id="jours">0</span><small>Jours</small></div>
-    <div><span id="heures">0</span><small>Heures</small></div>
-    <div><span id="minutes">0</span><small>Minutes</small></div>
-    <div><span id="secondes">0</span><small>Secondes</small></div>
+
+<!-- Heure actuelle et compte à rebours -->
+<section id="compte-a-rebours">
+  <h2>Pour ma princesse 💗👑</h2>
+
+  <div class="horloge">
+    <p>🕰️ L'heure actuelle en Haïti</p>
+    <div id="heure-actuelle">--:--:--</div>
+    <div id="date-actuelle"></div>
+  </div>
+
+  <div class="anniversaire">
+    <h3>🎂 Avant ton grand jour, Bébé !</h3>
+    <p>Chaque seconde nous rapproche de toi ✨</p>
+
+    <div class="compteur">
+      <div><span id="jours">0</span><small>Jours</small></div>
+      <div><span id="heures">0</span><small>Heures</small></div>
+      <div><span id="minutes">0</span><small>Minutes</small></div>
+      <div><span id="secondes">0</span><small>Secondes</small></div>
+    </div>
   </div>
 </section>
 
 <style>
   #compte-a-rebours {
     text-align: center;
-    padding: 25px 12px;
+    padding: 24px 12px;
     margin: 20px auto;
     color: #854568;
     background: #fff0f6;
     border-radius: 20px;
     max-width: 600px;
+    box-sizing: border-box;
   }
 
-  #compte-a-rebours h2 {
-    font-size: 22px;
+  .horloge, .anniversaire {
+    background: #fff8fb;
+    padding: 16px 8px;
+    margin: 12px auto;
+    border-radius: 16px;
+  }
+
+  #heure-actuelle {
+    font-size: 32px;
+    font-weight: bold;
+    color: #a64d79;
+  }
+
+  #date-actuelle {
+    margin-top: 6px;
   }
 
   .compteur {
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 8px;
     flex-wrap: wrap;
-    margin-top: 20px;
+    margin-top: 16px;
   }
 
   .compteur div {
     background: #f8dce9;
     border-radius: 12px;
-    padding: 12px;
+    padding: 12px 8px;
     min-width: 55px;
   }
 
   .compteur span {
     display: block;
-    font-size: 25px;
+    font-size: 24px;
     font-weight: bold;
   }
 
@@ -327,17 +352,35 @@
 </style>
 
 <script>
-  function actualiserCompteARebours() {
-    // Minuit le 24 octobre 2026, heure d'Haïti
-    const dateAnniversaire =
+  function actualiserHorlogeEtCompte() {
+    const maintenant = new Date();
+
+    document.getElementById("heure-actuelle").textContent =
+      new Intl.DateTimeFormat("fr-FR", {
+        timeZone: "America/Port-au-Prince",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: false
+      }).format(maintenant);
+
+    document.getElementById("date-actuelle").textContent =
+      new Intl.DateTimeFormat("fr-FR", {
+        timeZone: "America/Port-au-Prince",
+        weekday: "long",
+        day: "numeric",
+        month: "long",
+        year: "numeric"
+      }).format(maintenant);
+
+    const anniversaire =
       new Date("2026-10-24T00:00:00-04:00").getTime();
 
-    const maintenant = Date.now();
-    const difference = dateAnniversaire - maintenant;
+    const difference = anniversaire - maintenant.getTime();
 
     if (difference <= 0) {
-      document.getElementById("compte-a-rebours").innerHTML =
-        "<h2>🎂 Joyeux anniversaire, ma princesse ! 💗👑</h2>";
+      document.querySelector(".anniversaire").innerHTML =
+        "<h3>🎂 Joyeux anniversaire, ma princesse ! 💗👑</h3>";
       return;
     }
 
@@ -354,8 +397,8 @@
       Math.floor((difference % 60000) / 1000);
   }
 
-  actualiserCompteARebours();
-  setInterval(actualiserCompteARebours, 1000);
-</script>
+  actualiserHorlogeEtCompte();
+  setInterval(actualiserHorlogeEtCompte, 1000);
+</script>  
 </html>
 
