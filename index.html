@@ -271,5 +271,91 @@
     document.getElementById("retour").addEventListener("click", () => montrer("couverture"));
   </script>
 </body>
+  
+<!-- Compte à rebours pour Bébé -->
+<section id="compte-a-rebours">
+  <h2>🎂 Bientôt le grand jour, ma princesse ! 💗</h2>
+  <p>Chaque seconde nous rapproche de ton anniversaire ✨</p>
+
+  <div class="compteur">
+    <div><span id="jours">0</span><small>Jours</small></div>
+    <div><span id="heures">0</span><small>Heures</small></div>
+    <div><span id="minutes">0</span><small>Minutes</small></div>
+    <div><span id="secondes">0</span><small>Secondes</small></div>
+  </div>
+</section>
+
+<style>
+  #compte-a-rebours {
+    text-align: center;
+    padding: 25px 12px;
+    margin: 20px auto;
+    color: #854568;
+    background: #fff0f6;
+    border-radius: 20px;
+    max-width: 600px;
+  }
+
+  #compte-a-rebours h2 {
+    font-size: 22px;
+  }
+
+  .compteur {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+
+  .compteur div {
+    background: #f8dce9;
+    border-radius: 12px;
+    padding: 12px;
+    min-width: 55px;
+  }
+
+  .compteur span {
+    display: block;
+    font-size: 25px;
+    font-weight: bold;
+  }
+
+  .compteur small {
+    font-size: 12px;
+  }
+</style>
+
+<script>
+  function actualiserCompteARebours() {
+    // Minuit le 24 octobre 2026, heure d'Haïti
+    const dateAnniversaire =
+      new Date("2026-10-24T00:00:00-04:00").getTime();
+
+    const maintenant = Date.now();
+    const difference = dateAnniversaire - maintenant;
+
+    if (difference <= 0) {
+      document.getElementById("compte-a-rebours").innerHTML =
+        "<h2>🎂 Joyeux anniversaire, ma princesse ! 💗👑</h2>";
+      return;
+    }
+
+    document.getElementById("jours").textContent =
+      Math.floor(difference / 86400000);
+
+    document.getElementById("heures").textContent =
+      Math.floor((difference % 86400000) / 3600000);
+
+    document.getElementById("minutes").textContent =
+      Math.floor((difference % 3600000) / 60000);
+
+    document.getElementById("secondes").textContent =
+      Math.floor((difference % 60000) / 1000);
+  }
+
+  actualiserCompteARebours();
+  setInterval(actualiserCompteARebours, 1000);
+</script>
 </html>
 
