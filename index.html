@@ -1,1 +1,275 @@
 
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f5dce9">
+
+  <title>Pour ma princesse 💗</title>
+  <meta name="description" content="Un petit cadeau pour mon bébé, parce qu’elle mérite d’être célébrée comme il se doit. ❤️🎂">
+
+  <!-- Aperçu du site sur WhatsApp -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Pour ma princesse 💗">
+  <meta property="og:description" content="Un petit cadeau pour mon bébé, parce qu’elle mérite d’être célébrée comme il se doit. ❤️🎂">
+  <meta property="og:image" content="princesse.jpg">
+  <meta property="og:image:alt" content="Pour ma princesse">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <style>
+    :root {
+      --rose: #f5dce9;
+      --rose-clair: #fff6fb;
+      --mauve: #ded2f0;
+      --mauve-doux: #bda8d8;
+      --texte: #755b78;
+      --blanc: #fffafd;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--texte);
+      background: linear-gradient(145deg, #fff7fb, #f5dce9, #e8def7);
+      overflow-x: hidden;
+    }
+
+    button { font: inherit; }
+
+    .ecran {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px;
+    }
+
+    .carte {
+      width: min(100%, 570px);
+      padding: 28px 20px;
+      text-align: center;
+      border: 1px solid #ffffffc9;
+      border-radius: 28px;
+      background: #fffafdde;
+      box-shadow: 0 14px 50px #9f7fa329;
+      animation: apparition 1.2s ease both;
+    }
+
+    .couronne {
+      font-size: 38px;
+      animation: flotter 3s ease-in-out infinite;
+    }
+
+    h1 {
+      font-size: clamp(2.1rem, 8vw, 3.5rem);
+      font-weight: normal;
+      margin: 12px 0;
+    }
+
+    h2 {
+      font-size: clamp(1.7rem, 6vw, 2.4rem);
+      font-weight: normal;
+    }
+
+    p {
+      font-size: 1.08rem;
+      line-height: 1.85;
+    }
+
+    .petit {
+      font-size: .92rem;
+      letter-spacing: 1px;
+    }
+
+    .portrait {
+      width: min(100%, 310px);
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      border-radius: 170px 170px 24px 24px;
+      border: 6px solid white;
+      box-shadow: 0 8px 30px #a887b444;
+      margin: 18px auto;
+      display: block;
+    }
+
+    .bouton {
+      border: 0;
+      border-radius: 999px;
+      padding: 14px 24px;
+      margin: 8px 4px;
+      background: linear-gradient(120deg, #efc7dd, #d8c6ef);
+      color: #694f72;
+      box-shadow: 0 5px 16px #ac83b32b;
+      cursor: pointer;
+      transition: transform .25s, box-shadow .25s;
+    }
+
+    .bouton:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 9px 22px #ac83b344;
+    }
+
+    .cache { display: none; }
+
+    .fond-photo {
+      background:
+        linear-gradient(#fff6f3e8, #f6e8f6f0),
+        url("nous-deux.jpg") center / cover fixed;
+    }
+
+    .lettre {
+      text-align: left;
+      white-space: pre-line;
+      padding: 6px;
+    }
+
+    .signature {
+      text-align: center;
+      font-style: italic;
+      margin-top: 30px;
+    }
+
+    .etoile {
+      position: fixed;
+      pointer-events: none;
+      z-index: 5;
+      animation: tomber 5s linear forwards;
+    }
+
+    .musique {
+      position: fixed;
+      z-index: 10;
+      bottom: 14px;
+      right: 12px;
+      background: #fffaf2ed;
+      border: 1px solid #e7d5ec;
+      border-radius: 999px;
+      padding: 10px 14px;
+      color: var(--texte);
+      box-shadow: 0 4px 18px #755b7822;
+    }
+
+    @keyframes apparition {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes flotter {
+      0%, 100% { transform: translateY(0) rotate(-4deg); }
+      50% { transform: translateY(-8px) rotate(4deg); }
+    }
+
+    @keyframes tomber {
+      from { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+      to { transform: translateY(110vh) rotate(300deg); opacity: 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <audio id="musique" src="musique.mp3" loop preload="none"></audio>
+  <button class="musique" id="boutonMusique" type="button">♫ Écouter Daylight</button>
+
+  <main>
+    <section class="ecran" id="couverture">
+      <div class="carte">
+        <div class="couronne">👑</div>
+        <p class="petit">UN PETIT CADEAU POUR QUELQU’UN D’UNIQUE</p>
+        <h1>Pour ma princesse 💗</h1>
+        <p>Pour mon Bébé… une petite surprise préparée avec beaucoup d’amour. 🎀</p>
+        <img class="portrait" src="princesse.jpg" alt="Ma princesse"
+          onerror="this.style.display='none'">
+        <button class="bouton" id="ouvrir" type="button">Ouvre ton cadeau, bébé ♡</button>
+        <p class="petit">Une petite page rien que pour toi ✨</p>
+      </div>
+    </section>
+
+    <section class="ecran cache" id="histoire">
+      <div class="carte">
+        <div class="couronne">🌷</div>
+        <h2>Notre petite histoire</h2>
+        <p>Il y a des personnes qu’on rencontre et qui finissent par prendre une place immense dans notre cœur… ❤️</p>
+        <p>Et puis il y a toi, mon bébé.</p>
+        <p>De notre rencontre en Nouveau Secondaire 3 à l’Institut Le Marien, je me souviens encore de la première impression que tu m’as laissée. Tes longs cheveux, tes grands yeux… franchement, tu étais tellement belle que mon cœur avait déjà décidé de t’aimer avant même que je te connaisse vraiment. 😂💗</p>
+        <p>Je t’appelais bébé parce que j’avais cette envie de te protéger, de prendre soin de toi et de te garder précieusement dans ma vie.</p>
+        <p>Et comment oublier nos petits moments, comme quand tu as essayé de m’apprendre à jouer à UNO ? 😭😂 Les règles m’échappent encore, mais te voir t’amuser avec moi rendait ce moment précieux. Ce n’était pas le jeu qui comptait, c’était d’être avec toi.</p>
+        <p>Je n’oublierai jamais non plus comment tu m’as encouragée lorsque mon rêve de partir étudier en Russie semblait s’effondrer. Quand je pleurais parce que je n’avais pas obtenu la bourse, tu m’as rappelé qu’il existait d’autres chemins. Tu as pris mon rêve au sérieux et tu m’as aidée à garder espoir. Ça, je ne l’oublierai jamais.</p>
+        <p>Tu es ma bienfaitrice, mon confort émotionnel, ma source de paix et ma sœur de cœur. Je remercie Dieu de t’avoir mise sur mon chemin. Tu as un cœur en or, et j’espère que la vie te rendra tout le bien que tu offres autour de toi.</p>
+        <p>Pour ton anniversaire, je prie Dieu de te protéger, de te garder heureuse et de veiller sur toi et toute ta famille. Qu’Il vous accorde la santé, la paix, la prospérité et de nombreuses années remplies de bonheur. Que tes rêves deviennent réalité et que tu aies toujours des raisons de sourire.</p>
+        <p>Merci pour ta présence, tes encouragements, nos souvenirs et tous ces petits moments qui deviennent spéciaux simplement parce que je les partage avec toi.</p>
+        <p>Joyeux anniversaire, ma princesse. 👑💗 Je t’aime énormément, mon bébé. J’espère que tu n’oublieras jamais la place que tu as dans mon cœur, peu importe les kilomètres et les changements que la vie nous réserve.</p>
+        <p class="signature">Avec tout mon amour,<br>Ta sœur de cœur ❤️</p>
+        <button class="bouton" id="surprise" type="button">Attends, bébé… 💌</button>
+      </div>
+    </section>
+
+    <section class="ecran cache" id="final">
+      <div class="carte">
+        <div class="couronne">🎀👑🎀</div>
+        <h2>Une dernière chose, ma princesse…</h2>
+        <p>J’espère que la vie te donnera mille raisons de sourire, et que tu te souviendras toujours que tu es une personne précieuse. ❤️</p>
+        <p>Merci d’être toi, mon bébé. Joyeux anniversaire ! 🥹💗</p>
+        <p class="signature">Ta sœur de cœur, pour toujours dans les souvenirs. 💗</p>
+        <button class="bouton" id="retour" type="button">Revoir mon cadeau ↺</button>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const musique = document.getElementById("musique");
+    const boutonMusique = document.getElementById("boutonMusique");
+
+    boutonMusique.addEventListener("click", async () => {
+      if (musique.paused) {
+        try {
+          await musique.play();
+          boutonMusique.textContent = "Ⅱ Mettre en pause";
+        } catch {
+          boutonMusique.textContent = "Musique indisponible — vérifie musique.mp3";
+        }
+      } else {
+        musique.pause();
+        boutonMusique.textContent = "♫ Écouter Daylight";
+      }
+    });
+
+    function montrer(sectionId) {
+      ["couverture", "histoire", "final"].forEach(id => {
+        document.getElementById(id).classList.toggle("cache", id !== sectionId);
+      });
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      etoiles();
+    }
+
+    function etoiles() {
+      const symboles = ["♡", "✧", "💗", "✿"];
+      for (let i = 0; i < 18; i++) {
+        const el = document.createElement("span");
+        el.className = "etoile";
+        el.textContent = symboles[Math.floor(Math.random() * symboles.length)];
+        el.style.left = Math.random() * 100 + "vw";
+        el.style.top = "-5vh";
+        el.style.fontSize = (16 + Math.random() * 18) + "px";
+        el.style.animationDuration = (3 + Math.random() * 3) + "s";
+        document.body.appendChild(el);
+        setTimeout(() => el.remove(), 6500);
+      }
+    }
+
+    document.getElementById("ouvrir").addEventListener("click", () => montrer("histoire"));
+    document.getElementById("surprise").addEventListener("click", () => montrer("final"));
+    document.getElementById("retour").addEventListener("click", () => montrer("couverture"));
+  </script>
+</body>
+</html>
+
